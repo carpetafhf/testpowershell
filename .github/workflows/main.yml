@@ -1,0 +1,14 @@
+name: Test PowerShell on windows
+on: push
+
+jobs:
+  pester-test:
+    name: Pester test
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Pester test for get-planets file
+        shell: powershell
+        run: |
+          Invoke-Pester Get-Planet.Tests.ps1 -Passthru
